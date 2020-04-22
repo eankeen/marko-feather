@@ -1,0 +1,46 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaVersion": 2020,
+    "ecmaFeatures": {
+      "impliedStrict": true
+    }
+  },
+  "env": {
+    "browser": true,
+    "node": true,
+    "webextensions": true
+  },
+  "globals": {
+    "chrome": true,
+    "browser": true
+  },
+  "plugins": ["@typescript-eslint", "simple-import-sort", "prettier"],
+  "extends": [
+    "eslint:recommended",
+    "standard",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended",
+    "plugin:no-use-extend-native/recommended",
+    "plugin:prettier/recommended",
+    "prettier/@typescript-eslint"
+  ],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "rules": {
+    // simple-import-sort
+    "simple-import-sort/sort": "error",
+    "sort-imports": "off",
+    "import/order": "off",
+
+    // overrides
+    "prefer-const": "off",
+    "@typescript-eslint/ban-ts-ignore": "off"
+  }
+}

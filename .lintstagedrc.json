@@ -1,0 +1,5 @@
+{
+  "**/*.{ts,js}": ["pnpm run lint:js:fix"],
+  "**/*.{css}": ["pnpm run lint:css:fix"],
+  "**/*.{ts,js,css,json,md,yaml,yml}": ["pnpm run lint:misc:fix"]
+}

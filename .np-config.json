@@ -1,0 +1,8 @@
+{
+  "anyBranch": true,
+  "yarn": false,
+  "contents": "dist",
+  "cleanup": false,
+  "releaseDraft": true,
+  "tests": "false"
+}

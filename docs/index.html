@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/fox-css/dist/fox.dark.min.css"
+    />
+  </head>
+  <body>
+    <h1 id="web-input-readline-hotkeys-extension">
+      Web Input Readline Hotkeys Extension
+    </h1>
+    <p>
+      Chrome and Firefox extension to enable
+      <a href="https://tiswww.case.edu/php/chet/readline/rltop.html"
+        >readline</a
+      >
+      / emacs style keyboard shortcuts across the web. You can use these in the
+      following places
+    </p>
+    <ul>
+      <li><code>&lt;input&gt;</code> elements</li>
+      <li>
+        <code>HTMLElement</code>s that have attribute
+        <code>contenteditable</code> set to <code>true</code>
+      </li>
+    </ul>
+    <p>
+      This covers the majority of cases - it works on Slack, Discord, Youtube
+    </p>
+    <h2 id="contributing">Contributing</h2>
+    <p>
+      We use the <a href="https://pnpm.js.org"><code>pnpm</code></a> package
+      manager. Extensions are created separately for both Chrome and Firefox
+    </p>
+    <pre><code class="language-sh">pnpm i
+
+# build (to be loaded as unpacked extension)
+pnpm run dev
+# output in dist/chrome or dist/firefox
+
+# publish (runs `package` which generates `chrome.zip` and `firefox.zip`)
+pnpm run publish</code></pre>
+  </body>
+</html>

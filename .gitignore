@@ -1,0 +1,8 @@
+# build
+dist/
+
+# npm
+node_modules/
+
+# misc
+*.log
