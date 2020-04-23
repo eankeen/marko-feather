@@ -1,3 +1,3 @@
-# Web Components Feather
+# Marko Feather
 
-Feather icons as Web Components
+Feather icons as Marko Components

@@ -20,5 +20,6 @@
     "plugins": [{ "name": "typescript-plugin-css-modules" }]
   },
   "exclude": ["node_modules", "dist"],
-  "typeRoots": ["node_modules/@types", "node_modules/web-ext-types", "@types"]
+  "typeRoots": ["node_modules/@types", "./@types"],
+  "types": ["del"]
 }

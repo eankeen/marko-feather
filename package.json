@@ -1,41 +1,60 @@
 {
-  "name": "web-components-feather",
+  "name": "marko-feather",
   "author": "Edwin Kofler",
   "license": "MIT",
-  "private": false,
   "version": "0.0.0",
-  "description": "allow readline-style on select text input boxes",
+  "description": "Feather Icons as Marko Cmponents",
+  "bugs": {
+    "url": "https://github.com/eankeen/marko-feather/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eankeen/marko-feather.git"
+  },
+  "keywords": [
+    "markjs",
+    "marko",
+    "feather",
+    "feather-icons",
+    "svg"
+  ],
+  "homepage": "https://github.com/eankeen/marko-feather#readme",
+  "engines": {
+    "node": ">=12.10"
+  },
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "dev": "cross-env NODE_ENV=development pnpm run build:rollup",
-    "prod": "cross-env NODE_ENV=production pnpm run build:rollup",
-    "build:rollup": "webpack -r ts-node/register -c webpack.config.ts",
-    "package": "cross-env BABEL_ENV=gulp gulp --require esm --require @babel/register -f gulpfile.js buildPackages",
-    "publish:pre": "run-s np matchVersion prod package",
-    "site:generate": "cross-env BABEL_ENV=gulp gulp --require esm --require @babel/register -f gulpfile.js docs",
+    "build:lib": "run-s build:lib:js build:lib:marko",
+    "build:lib:js": "rollup -r ts-node/register -c rollup.config.js",
+    "build:lib:marko": "node -r ts-node/register src/generateIcons.ts",
+    "site:serve": "cross-env NODE_ENV=development webpack-dev-server -r @babel/register",
+    "site:build": "cross-env NODE_ENV=production webpack -r @babel/register",
     "lint": "run-p lint:js lint:css lint:misc",
     "lint:fix": "run-p lint:js:fix lint:css:fix lint:misc:fix",
     "lint:js": "eslint . --ext .ts --ext .tsx",
     "lint:js:fix": "eslint . --ext .ts --ext .tsx --fix",
     "lint:misc": "prettier --check .",
     "lint:misc:fix": "prettier --write .",
-    "lint:staged": "lint-staged",
-    "np": "np"
-  },
-  "engines": {
-    "node": ">=14.0.0"
+    "lint:staged": "lint-staged"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
+    "@babel/plugin-transform-modules-commonjs": "^7.9.0",
     "@babel/preset-env": "^7.9.5",
     "@babel/preset-typescript": "^7.9.0",
     "@babel/register": "^7.9.0",
-    "@commitlint/cli": "^8.3.5",
-    "@commitlint/config-conventional": "^8.3.4",
+    "@marko/webpack": "^5.0.3",
+    "@types/html-webpack-plugin": "^3.2.2",
     "@types/node": "^13.13.0",
     "@typescript-eslint/eslint-plugin": "^2.28.0",
     "@typescript-eslint/parser": "^2.28.0",
+    "babel-loader": "^8.1.0",
     "babel-plugin-improved-piped-pipelines": "^0.2.6",
     "cross-env": "^7.0.2",
+    "del": "^5.1.0",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.1",
     "eslint-config-standard": "^14.1.1",
@@ -48,21 +67,19 @@
     "eslint-plugin-simple-import-sort": "^5.0.2",
     "eslint-plugin-standard": "^4.0.1",
     "esm": "^3.2.25",
-    "gulp": "^4.0.2",
-    "gulp-htmlmin": "^5.0.1",
-    "gulp-markdown": "^5.0.1",
-    "gulp-plumber": "^1.2.1",
-    "gulp-rename": "^2.0.0",
-    "gulp-zip": "^5.0.1",
+    "feather-icons": "^4.28.0",
+    "html-webpack-plugin": "^4.2.0",
     "husky": "^4.2.5",
     "lint-staged": "^10.1.6",
+    "marko": "^4.21.1",
     "np": "^6.2.1",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.0.4",
+    "svg-inline-loader": "^0.8.2",
     "ts-node": "^8.9.0",
-    "typescript": "^3.8.3"
-  },
-  "dependencies": {
-    "parcel-bundler": "^1.12.4"
+    "typescript": "^3.8.3",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
   }
 }

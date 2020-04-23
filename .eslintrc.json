@@ -23,16 +23,10 @@
     "standard",
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:react/recommended",
     "plugin:no-use-extend-native/recommended",
     "plugin:prettier/recommended",
     "prettier/@typescript-eslint"
   ],
-  "settings": {
-    "react": {
-      "version": "detect"
-    }
-  },
   "rules": {
     // simple-import-sort
     "simple-import-sort/sort": "error",
