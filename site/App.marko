@@ -1,5 +1,14 @@
-import MyIcon from '../dist/airplay'
+import MyIcon from 'icons/airplay'
+import { Airplay } from 'icons'
+
+class {
+  onCreate() {
+    console.info(MyIcon)
+    console.info(Airplay)
+  }
+}
 
 <div>
   <${MyIcon} color="orange" strokeWidth="1" size="36"></>
+  <${Airplay} color="orange" strokeWidth="1" size="36"></>
 </div>

@@ -6,6 +6,7 @@ devDependencies:
   '@babel/register': 7.9.0_@babel+core@7.9.0
   '@marko/webpack': 5.0.3_marko@4.21.1+webpack@4.43.0
   '@types/html-webpack-plugin': 3.2.2
+  '@types/lodash': 4.14.150
   '@types/node': 13.13.0
   '@typescript-eslint/eslint-plugin': 2.28.0_7d9b020b8616a35b73d4b597f43d4d93
   '@typescript-eslint/parser': 2.28.0_eslint@6.8.0+typescript@3.8.3
@@ -29,6 +30,7 @@ devDependencies:
   html-webpack-plugin: 4.2.0_webpack@4.43.0
   husky: 4.2.5
   lint-staged: 10.1.6
+  lodash: 4.17.15
   marko: 4.21.1
   np: 6.2.1
   npm-run-all: 4.1.5
@@ -1046,6 +1048,10 @@ packages:
     dev: true
     resolution:
       integrity: sha512-8+KAKzEvSUdeo+kmqnKrqgeE+LcA0tjYWFY7RPProVYwnqDjukzO+3b6dLD56rYX5TdWejnEOLJYOIeh4CXKuA==
+  /@types/lodash/4.14.150:
+    dev: true
+    resolution:
+      integrity: sha512-kMNLM5JBcasgYscD9x/Gvr6lTAv2NVgsKtet/hm93qMyf/D1pt+7jeEZklKJKxMVmXjxbRVQQGfqDSfipYCO6w==
   /@types/minimatch/3.0.3:
     dev: true
     resolution:
@@ -8742,6 +8748,7 @@ specifiers:
   '@babel/register': ^7.9.0
   '@marko/webpack': ^5.0.3
   '@types/html-webpack-plugin': ^3.2.2
+  '@types/lodash': ^4.14.150
   '@types/node': ^13.13.0
   '@typescript-eslint/eslint-plugin': ^2.28.0
   '@typescript-eslint/parser': ^2.28.0
@@ -8765,6 +8772,7 @@ specifiers:
   html-webpack-plugin: ^4.2.0
   husky: ^4.2.5
   lint-staged: ^10.1.6
+  lodash: ^4.17.15
   marko: ^4.21.1
   np: ^6.2.1
   npm-run-all: ^4.1.5

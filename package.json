@@ -4,6 +4,20 @@
   "license": "MIT",
   "version": "0.0.0",
   "description": "Feather Icons as Marko Cmponents",
+  "main": "dist/index.js",
+  "scripts": {
+    "serve": "cross-env NODE_ENV=development webpack-dev-server -r @babel/register",
+    "build:lib": "node -r ts-node/register src/generateIcons.ts",
+    "build:site": "cross-env NODE_ENV=production webpack -r @babel/register",
+    "lint": "run-p lint:js lint:css lint:misc",
+    "lint:fix": "run-p lint:js:fix lint:css:fix lint:misc:fix",
+    "lint:js": "eslint . --ext .ts --ext .tsx",
+    "lint:js:fix": "eslint . --ext .ts --ext .tsx --fix",
+    "lint:misc": "prettier --check .",
+    "lint:misc:fix": "prettier --write .",
+    "lint:staged": "lint-staged"
+  },
+  "homepage": "https://github.com/eankeen/marko-feather#readme",
   "bugs": {
     "url": "https://github.com/eankeen/marko-feather/issues"
   },
@@ -18,27 +32,11 @@
     "feather-icons",
     "svg"
   ],
-  "homepage": "https://github.com/eankeen/marko-feather#readme",
-  "engines": {
-    "node": ">=12.10"
-  },
-  "main": "dist/index.js",
   "files": [
     "dist"
   ],
-  "scripts": {
-    "build:lib": "run-s build:lib:js build:lib:marko",
-    "build:lib:js": "rollup -r ts-node/register -c rollup.config.js",
-    "build:lib:marko": "node -r ts-node/register src/generateIcons.ts",
-    "site:serve": "cross-env NODE_ENV=development webpack-dev-server -r @babel/register",
-    "site:build": "cross-env NODE_ENV=production webpack -r @babel/register",
-    "lint": "run-p lint:js lint:css lint:misc",
-    "lint:fix": "run-p lint:js:fix lint:css:fix lint:misc:fix",
-    "lint:js": "eslint . --ext .ts --ext .tsx",
-    "lint:js:fix": "eslint . --ext .ts --ext .tsx --fix",
-    "lint:misc": "prettier --check .",
-    "lint:misc:fix": "prettier --write .",
-    "lint:staged": "lint-staged"
+  "engines": {
+    "node": ">=12.10"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
@@ -48,6 +46,7 @@
     "@babel/register": "^7.9.0",
     "@marko/webpack": "^5.0.3",
     "@types/html-webpack-plugin": "^3.2.2",
+    "@types/lodash": "^4.14.150",
     "@types/node": "^13.13.0",
     "@typescript-eslint/eslint-plugin": "^2.28.0",
     "@typescript-eslint/parser": "^2.28.0",
@@ -71,6 +70,7 @@
     "html-webpack-plugin": "^4.2.0",
     "husky": "^4.2.5",
     "lint-staged": "^10.1.6",
+    "lodash": "^4.17.15",
     "marko": "^4.21.1",
     "np": "^6.2.1",
     "npm-run-all": "^4.1.5",

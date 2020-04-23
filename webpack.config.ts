@@ -13,6 +13,9 @@ export default {
   },
   resolve: {
     extensions: ['.ts', '.mjs', '.js', '.marko'],
+    alias: {
+      icons: path.join(__dirname, 'dist'),
+    },
   },
   module: {
     rules: [

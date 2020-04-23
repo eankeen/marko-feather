@@ -1,6 +1,7 @@
 // @ts-ignore
 import del from 'del'
 import fs, { Dirent } from 'fs'
+import { camelCase, startCase } from 'lodash'
 import path from 'path'
 
 process.on('unhandledRejection', (err) => {
@@ -8,6 +9,8 @@ process.on('unhandledRejection', (err) => {
 })
 const featherDir: string = path.dirname(require.resolve('feather-icons'))
 const iconDir = path.join(featherDir, 'icons')
+const distDir: string = path.join(__dirname, '../dist')
+const iconOutDir: string = path.join(__dirname, '../dist/icons')
 
 async function getIconList(): Promise<string[]> {
   let iconList: Dirent[] = await fs.promises.readdir(iconDir, {
@@ -25,6 +28,25 @@ async function getIconList(): Promise<string[]> {
 }
 
 ;(async (): Promise<void> => {
+  await fs.promises.writeFile(
+    path.join(distDir, 'index.js'),
+    `module.exports = {
+${await (async (): Promise<string> => {
+  let string = ''
+  ;(await getIconList()).forEach((iconName: string) => {
+    string += `  ${startCase(camelCase(iconName))
+      .replace(/ /g, '')
+      .replace('Svg', '')}: require('./${iconName.replace(
+      '.svg',
+      '.marko'
+    )}'),\n`
+  })
+  console.log(string)
+  return string
+})()}}`
+  )
+})()
+;(async (): Promise<void> => {
   let itemContents: PromiseSettledResult<string>[] | undefined
   let readPromises: Promise<string>[] = []
   for (const icon of await getIconList()) {
@@ -38,7 +60,6 @@ async function getIconList(): Promise<string[]> {
     itemContents = await Promise.allSettled(readPromises)
   }
   // transform and write feather icons
-  const iconOutDir: string = path.join(__dirname, '../dist/icons')
   const writePromises: Promise<void>[] = []
   for (const iconPromiseResult of itemContents) {
     if (iconPromiseResult.status !== 'fulfilled') {
@@ -53,7 +74,6 @@ async function getIconList(): Promise<string[]> {
       .replace(/"24"/gi, 'input.size')
       .replace(/stroke="currentColor"/i, `stroke=input.color`)
       .replace(/stroke-width="2"/i, `stroke-width=input.strokeWidth`)
-    console.log(newFeatherIcon)
     if (newFeatherIcon) {
       await del(['../dist/*', '!../dist/'])
       let nameStringAtStart: string = newFeatherIcon.slice(
