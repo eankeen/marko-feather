@@ -27,6 +27,7 @@ async function getIconList(): Promise<string[]> {
   return iconListString
 }
 
+del.sync([path.join(__dirname, '../dist/**/*')])
 ;(async (): Promise<void> => {
   await fs.promises.writeFile(
     path.join(distDir, 'index.js'),
@@ -75,7 +76,6 @@ ${await (async (): Promise<string> => {
       .replace(/stroke="currentColor"/i, `stroke=input.color`)
       .replace(/stroke-width="2"/i, `stroke-width=input.strokeWidth`)
     if (newFeatherIcon) {
-      await del(['../dist/*', '!../dist/'])
       let nameStringAtStart: string = newFeatherIcon.slice(
         newFeatherIcon.indexOf(`class="feather`) + 15
       )
