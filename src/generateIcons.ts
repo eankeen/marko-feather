@@ -28,6 +28,7 @@ async function getIconList(): Promise<string[]> {
 }
 
 del.sync([path.join(__dirname, '../dist/**/*')])
+// cjs
 ;(async (): Promise<void> => {
   await fs.promises.writeFile(
     path.join(distDir, 'index.js'),
@@ -42,11 +43,27 @@ ${await (async (): Promise<string> => {
       '.marko'
     )}'),\n`
   })
-  console.log(string)
   return string
 })()}}`
   )
 })()
+// esm
+;(async (): Promise<void> => {
+  await fs.promises.writeFile(
+    path.join(distDir, 'index.esm.js'),
+    `
+${await (async (): Promise<string> => {
+  let string = ''
+  ;(await getIconList()).forEach((iconName: string) => {
+    string += `export { ${startCase(camelCase(iconName))
+      .replace(/ /g, '')
+      .replace('Svg', '')} } from './${iconName.replace('.svg', '.marko')}'\n`
+  })
+  return string
+})()}`
+  )
+})()
+//
 ;(async (): Promise<void> => {
   let itemContents: PromiseSettledResult<string>[] | undefined
   let readPromises: Promise<string>[] = []

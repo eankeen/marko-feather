@@ -5,6 +5,7 @@
   "version": "0.0.0",
   "description": "Feather Icons as Marko Cmponents",
   "main": "dist/index.js",
+  "module": "dist/index.esm.js",
   "scripts": {
     "serve": "cross-env NODE_ENV=development webpack-dev-server -r @babel/register",
     "build:lib": "node -r ts-node/register src/generateIcons.ts",

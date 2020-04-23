@@ -1,14 +1,19 @@
-import MyIcon from 'icons/airplay'
-import { Airplay } from 'icons'
+import Airplay from 'icons/airplay'
+import GitHub from 'icons/github'
+import Book from 'icons/book'
 
 class {
   onCreate() {
-    console.info(MyIcon)
-    console.info(Airplay)
+    // tired of adding loaders...
+    document.head.insertAdjacentHTML("beforeend", `<style>body,html{margin: 0; padding: 0; border: 0; box-sizing: border-box;background-color: #212529}</style>`)
+
   }
 }
 
-<div>
-  <${MyIcon} color="orange" strokeWidth="1" size="36"></>
-  <${Airplay} color="orange" strokeWidth="1" size="36"></>
-</div>
+<main>
+  <div style="margin: 10px; display: flex;">
+    <div style="margin: 8px;"><${Airplay} color="#e9ecef" strokeWidth="2" size="48"></></div>
+    <div style="margin: 8px;"><${GitHub} color="#e9ecef" strokeWidth="2" size="48"></></div>
+    <div style="margin: 8px;"><${Book} color="#e9ecef" strokeWidth="2" size="48"></></div>
+  </div>
+</main>
